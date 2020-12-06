@@ -7,9 +7,10 @@ public class class_table {
     int[] over_week=new int[75];//课的结束周数
     String[] posion=new String[75];//上课地点
     String[] teacher=new String[75];//授课教师
+    public void set_time(){
+        start_time=1598803200000L;//第一周的第一天早上0时0分
+    }
     public void set_class(){
-        start_time=1598803200L;//获取时间的时候记得倒时差
-
         title[11]="军事理论";
         teacher[11]="周剑波";
         start_week[11]=6;
