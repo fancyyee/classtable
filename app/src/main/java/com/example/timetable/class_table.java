@@ -57,5 +57,12 @@ public class class_table {
         start_week[52]=6;
         over_week[52]=18;
         posion[52]="T1309";
+
+        title[72]="高等数学Ⅱ";
+        teacher[72]="方谋耶";
+        start_week[72]=6;
+        over_week[72]=18;
+        posion[72]="T1309";
+
     }
 }

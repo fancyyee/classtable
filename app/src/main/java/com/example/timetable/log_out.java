@@ -5,7 +5,15 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class log_out {
-    public void log_out(String error){
+    public void log_out(Exception e){
+        StackTraceElement stackTraceElement= e.getStackTrace()[0];// 得到异常棧的首个元素
+        String text="File="+stackTraceElement.getFileName()+"\n"+// 打印文件名
+        "Line="+stackTraceElement.getLineNumber()+"\n"+// 打印出错行号
+        "Method="+stackTraceElement.getMethodName()+"\n"+// 打印出错方法
+                "log="+e.toString()+"\n";
+        text_out(text);
+    }
+    public void text_out(String error){
         String filePath = "/storage/emulated/0/文件/";//目录名
         String fileName = "log.txt";//文件名
 
