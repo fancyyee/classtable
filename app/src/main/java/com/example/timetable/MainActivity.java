@@ -83,41 +83,56 @@ public class MainActivity extends AppCompatActivity {
                 buttonx=button[posion-20];
             }
 
-            if(class_table.title[posion]==null){
+            if(class_table.title[posion]==null){//判断，如果title为空则设置该按钮看不见
                 buttonx.setVisibility(View.INVISIBLE);
             }
             else{
                 buttonx.setText(class_table.title[posion]);
-                if(class_table.start_week[posion]>weeknum||class_table.over_week[posion]<weeknum){
+                if(class_table.start_week[posion]>weeknum||class_table.over_week[posion]<weeknum){//如果时间符合
                     if(coverid){
                         buttonx.setVisibility(View.VISIBLE);
                     }
                     else{
                         buttonx.setVisibility(View.INVISIBLE);
                     }
+                    buttonx.setBackgroundColor(Color.parseColor("#708090"));
                 }
                 else{
                     buttonx.setVisibility(View.VISIBLE);
+                    buttonx.setBackgroundColor(Color.parseColor("#C6EFCE"));
                 }
-
             }
         }
     }
     public void week_num_change(Boolean change){//这里的change是true则是加是flase则是减少
         if(change){
-            week_num++;
+            weeknum++;
         }
         else{
-            week_num=week_num-1;
+            weeknum--;
         }
         class_on();
+        TextView textView=findViewById(R.id.textView6);
+        String text="这是第"+Integer.toString(weeknum)+"周";
+        textView.setText(text);
     }
     public void view_change(){//修改viewID并且重置课表达到翻页的效果，这个函数给翻页按钮
+        TextView[] textView={findViewById(R.id.textView1), findViewById(R.id.textView2), findViewById(R.id.textView3), findViewById(R.id.textView4), findViewById(R.id.textView5)};
         if(viewid){
             viewid=false;
+            textView[0].setText("周一");
+            textView[1].setText("周二");
+            textView[2].setText("周三");
+            textView[3].setText("周四");
+            textView[4].setText("周五");
         }
         else{
-            viewid=false;
+            viewid=true;
+            textView[0].setText("周三");
+            textView[1].setText("周四");
+            textView[2].setText("周五");
+            textView[3].setText("周六");
+            textView[4].setText("周日");
         }
         class_on();
     }
@@ -127,11 +142,20 @@ public class MainActivity extends AppCompatActivity {
         }
         AlertDialog alertDialog1=new AlertDialog.Builder(this)
                 .setTitle(class_table.title[location])//标题
-                .setMessage("教师：+"+class_table.teacher[location]+"\n" +
+                .setMessage("教师："+class_table.teacher[location]+"\n" +
                         "时间："+Integer.toString(class_table.start_week[location])+"-"+Integer.toString(class_table.over_week[location])+"周\n" +
                         "地点："+class_table.posion[location])//内容
                 .create();
         alertDialog1.show();
+    }
+    public void coverid_changge(){
+        if(coverid){
+            coverid=false;
+        }
+        else{
+            coverid=true;
+        }
+        class_on();
     }
     public void test(View view){
 
@@ -141,79 +165,102 @@ public class MainActivity extends AppCompatActivity {
 
 
 //----------------------以下是button的批量界面，以及该class结尾的}----------------------------------------------------
-    public void button11(View view){
-        tanchuang(11);
-    }
-    public void button12(View view){
-        tanchuang(12);
-    }
-    public void button13(View view){
-        tanchuang(13);
-    }
-    public void button14(View view){
-        tanchuang(14);
-    }
-    public void button15(View view){
-        tanchuang(15);
-    }
-    public void button21(View view){
-        tanchuang(21);
-    }
-    public void button22(View view){
-        tanchuang(22);
-    }
-    public void button23(View view){
-        tanchuang(23);
-    }
-    public void button24(View view){
-        tanchuang(24);
-    }
-    public void button25(View view){
-        tanchuang(25);
-    }
-    public void button31(View view){
-        tanchuang(31);
-    }
-    public void button32(View view){
-        tanchuang(32);
-    }
-    public void button33(View view){
-        tanchuang(33);
-    }
-    public void button34(View view){
-        tanchuang(34);
-    }
-    public void button35(View view){
-        tanchuang(35);
-    }
-    public void button41(View view){
-        tanchuang(41);
-    }
-    public void button42(View view){
-        tanchuang(42);
-    }
-    public void button43(View view){
-        tanchuang(43);
-    }
-    public void button44(View view){
-        tanchuang(44);
-    }
-    public void button45(View view){
-        tanchuang(45);
-    }
-    public void button51(View view){
-        tanchuang(51);
-    }
-    public void button52(View view){
-        tanchuang(52);
-    }
-    public void button53(View view){
-        tanchuang(53);
-    }
-    public void button54(View view){
-        tanchuang(54);
-    }
-    public void button55(View view){
-        tanchuang(55);
-    }    
+    public void button11(View view){
+        tanchuang(11);
+    }
+    public void button12(View view){
+        tanchuang(12);
+    }
+    public void button13(View view){
+        tanchuang(13);
+    }
+    public void button14(View view){
+        tanchuang(14);
+    }
+    public void button15(View view){
+        tanchuang(15);
+    }
+    public void button21(View view){
+        tanchuang(21);
+    }
+    public void button22(View view){
+        tanchuang(22);
+    }
+    public void button23(View view){
+        tanchuang(23);
+    }
+    public void button24(View view){
+        tanchuang(24);
+    }
+    public void button25(View view){
+        tanchuang(25);
+    }
+    public void button31(View view){
+        tanchuang(31);
+    }
+    public void button32(View view){
+        tanchuang(32);
+    }
+    public void button33(View view){
+        tanchuang(33);
+    }
+    public void button34(View view){
+        tanchuang(34);
+    }
+    public void button35(View view){
+        tanchuang(35);
+    }
+    public void button41(View view){
+        tanchuang(41);
+    }
+    public void button42(View view){
+        tanchuang(42);
+    }
+    public void button43(View view){
+        tanchuang(43);
+    }
+    public void button44(View view){
+        tanchuang(44);
+    }
+    public void button45(View view){
+        tanchuang(45);
+    }
+    public void button51(View view){
+        tanchuang(51);
+    }
+    public void button52(View view){
+        tanchuang(52);
+    }
+    public void button53(View view){
+        tanchuang(53);
+    }
+    public void button54(View view){
+        tanchuang(54);
+    }
+    public void button55(View view){
+        tanchuang(55);
+    }
+    public void button101(View view){//view向左
+        if(viewid){
+            view_change();
+        }
+    }
+    public void button102(View view){//view向右
+        try {
+            if (!viewid) {
+                view_change();
+            }
+        }catch (Exception e){
+            new log_out().log_out(e);
+        }
+    }
+    public void button103(View view){//周数-
+        week_num_change(false);
+    }
+    public void button104(View view){//周数+\
+        week_num_change(true);
+    }
+    public void switch1(View view){
+        coverid_changge();
+    }
 }
