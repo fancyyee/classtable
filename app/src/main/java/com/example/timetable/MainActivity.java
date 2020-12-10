@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 buttonx=button[posion-20];
             }
 
-
             if(class_table.title[posion]==null){
                 buttonx.setVisibility(View.INVISIBLE);
             }
@@ -104,6 +103,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    public void week_num_change(Boolean change){//这里的change是true则是加是flase则是减少
+        if(change){
+            week_num++;
+        }
+        else{
+            week_num=week_num-1;
+        }
+        class_on();
+    }
+    public void view_change(){//修改viewID并且重置课表达到翻页的效果，这个函数给翻页按钮
+        if(viewid){
+            viewid=false;
+        }
+        else{
+            viewid=false;
+        }
+        class_on();
+    }
     public void tanchuang(int location){//弹出窗口，int是课的代号
         if(viewid){//当视角处在周三到周日的时候，传来的位置要+20
             location=location+20;
@@ -119,4 +136,84 @@ public class MainActivity extends AppCompatActivity {
     public void test(View view){
 
     }
+
+
+
+
+//----------------------以下是button的批量界面，以及该class结尾的}----------------------------------------------------
+    public void button11(View view){
+        tanchuang(11);
+    }
+    public void button12(View view){
+        tanchuang(12);
+    }
+    public void button13(View view){
+        tanchuang(13);
+    }
+    public void button14(View view){
+        tanchuang(14);
+    }
+    public void button15(View view){
+        tanchuang(15);
+    }
+    public void button21(View view){
+        tanchuang(21);
+    }
+    public void button22(View view){
+        tanchuang(22);
+    }
+    public void button23(View view){
+        tanchuang(23);
+    }
+    public void button24(View view){
+        tanchuang(24);
+    }
+    public void button25(View view){
+        tanchuang(25);
+    }
+    public void button31(View view){
+        tanchuang(31);
+    }
+    public void button32(View view){
+        tanchuang(32);
+    }
+    public void button33(View view){
+        tanchuang(33);
+    }
+    public void button34(View view){
+        tanchuang(34);
+    }
+    public void button35(View view){
+        tanchuang(35);
+    }
+    public void button41(View view){
+        tanchuang(41);
+    }
+    public void button42(View view){
+        tanchuang(42);
+    }
+    public void button43(View view){
+        tanchuang(43);
+    }
+    public void button44(View view){
+        tanchuang(44);
+    }
+    public void button45(View view){
+        tanchuang(45);
+    }
+    public void button51(View view){
+        tanchuang(51);
+    }
+    public void button52(View view){
+        tanchuang(52);
+    }
+    public void button53(View view){
+        tanchuang(53);
+    }
+    public void button54(View view){
+        tanchuang(54);
+    }
+    public void button55(View view){
+        tanchuang(55);
+    }    
 }
