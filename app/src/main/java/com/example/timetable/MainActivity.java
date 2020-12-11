@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     else{
                         buttonx.setVisibility(View.INVISIBLE);
                     }
-                    buttonx.setBackgroundColor(Color.parseColor("#708090"));
+                    buttonx.setBackgroundColor(Color.parseColor("#9f9f9f"));
                 }
                 else{
                     buttonx.setVisibility(View.VISIBLE);

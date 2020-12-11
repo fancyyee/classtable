@@ -2,11 +2,11 @@ package com.example.timetable;
 
 public class class_table {
     long start_time;//学期开始的unix时间
-    String[] title=new String[75];//课标题
-    int[] start_week=new int[75];//课的开始周数
-    int[] over_week=new int[75];//课的结束周数
-    String[] posion=new String[75];//上课地点
-    String[] teacher=new String[75];//授课教师
+    String[] title=new String[76];//课标题
+    int[] start_week=new int[76];//课的开始周数
+    int[] over_week=new int[76];//课的结束周数
+    String[] posion=new String[76];//上课地点
+    String[] teacher=new String[76];//授课教师
     public void set_time(){
         start_time=1598803200000L;//第一周的第一天早上0时0分
     }
