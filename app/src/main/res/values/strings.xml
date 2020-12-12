@@ -13,4 +13,7 @@
     <string name="reduce">-</string>
     <string name="hiddle_class">隐藏的课</string>
     <string name="textview6">这是第？周</string>
+    <string name="affrim">确认</string>
+    <string name="clear">清空</string>
+
 </resources>

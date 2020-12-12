@@ -5,5 +5,360 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting">
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Tresday"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/button42"
+        app:layout_constraintStart_toStartOf="@+id/button42" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Friday"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/button52"
+        app:layout_constraintStart_toEndOf="@+id/button42" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Wednesday"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView1"
+        app:layout_constraintEnd_toStartOf="@+id/button42"
+        app:layout_constraintStart_toEndOf="@+id/button22" />
+
+    <Button
+        android:id="@+id/button44"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button44"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button34"
+        app:layout_constraintTop_toTopOf="@+id/button34" />
+
+    <Button
+        android:id="@+id/button43"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button43"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button33"
+        app:layout_constraintTop_toTopOf="@+id/button33" />
+
+    <Button
+        android:id="@+id/button41"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button41"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button31"
+        app:layout_constraintTop_toTopOf="@+id/button31" />
+
+    <Button
+        android:id="@+id/button33"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:onClick="button33"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/button32"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button32"
+        app:layout_constraintTop_toBottomOf="@+id/button32" />
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button23"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button33"
+        app:layout_constraintTop_toTopOf="@+id/button33" />
+
+    <Button
+        android:id="@+id/button24"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button24"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button34"
+        app:layout_constraintTop_toTopOf="@+id/button34" />
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button14"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button24"
+        app:layout_constraintTop_toTopOf="@+id/button24" />
+
+    <Button
+        android:id="@+id/button35"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:onClick="button35"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/button34"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button34"
+        app:layout_constraintTop_toBottomOf="@+id/button34" />
+
+    <Button
+        android:id="@+id/button34"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:onClick="button34"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/button33"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button33"
+        app:layout_constraintTop_toBottomOf="@+id/button33" />
+
+    <Button
+        android:id="@+id/button45"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button45"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button35"
+        app:layout_constraintTop_toTopOf="@+id/button35" />
+
+    <Button
+        android:id="@+id/button55"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button55"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button45"
+        app:layout_constraintTop_toTopOf="@+id/button45" />
+
+    <Button
+        android:id="@+id/button54"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button54"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button44"
+        app:layout_constraintTop_toTopOf="@+id/button44" />
+
+    <Button
+        android:id="@+id/button53"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button53"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button43"
+        app:layout_constraintTop_toTopOf="@+id/button43" />
+
+    <Button
+        android:id="@+id/button51"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button51"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button41"
+        app:layout_constraintTop_toTopOf="@+id/button41" />
+
+    <Button
+        android:id="@+id/button31"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="64dp"
+        android:onClick="button31"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button25"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button25"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button35"
+        app:layout_constraintTop_toTopOf="@+id/button35" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button15"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button25"
+        app:layout_constraintTop_toTopOf="@+id/button25" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button13"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button23"
+        app:layout_constraintTop_toTopOf="@+id/button23" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button11"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/button21"
+        app:layout_constraintTop_toTopOf="@+id/button21" />
+
+    <Button
+        android:id="@+id/button21"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button21"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button31"
+        app:layout_constraintTop_toTopOf="@+id/button31" />
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button22"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button32"
+        app:layout_constraintTop_toTopOf="@+id/button32" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="button12"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button22"
+        app:layout_constraintTop_toTopOf="@+id/button22" />
+
+    <Button
+        android:id="@+id/button42"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button42"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button32"
+        app:layout_constraintTop_toTopOf="@+id/button32" />
+
+    <Button
+        android:id="@+id/button52"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:onClick="button52"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button42"
+        app:layout_constraintTop_toTopOf="@+id/button42" />
+
+    <Button
+        android:id="@+id/button32"
+        android:layout_width="72dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:onClick="button32"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/button31"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button31"
+        app:layout_constraintTop_toBottomOf="@+id/button31" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/Monday"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button11"
+        app:layout_constraintEnd_toEndOf="@+id/button15"
+        app:layout_constraintStart_toStartOf="@+id/button15" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Tuesday"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/button21"
+        app:layout_constraintStart_toEndOf="@+id/button15" />
+
+    <Button
+        android:id="@+id/button102"
+        android:layout_width="39dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:onClick="button102"
+        android:text="@string/right"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button104"
+        app:layout_constraintTop_toTopOf="@+id/button104" />
+
+    <Button
+        android:id="@+id/button101"
+        android:layout_width="39dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="button101"
+        android:text="@string/left"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button103"
+        app:layout_constraintTop_toTopOf="@+id/button103" />
+
+    <Button
+        android:id="@+id/button103"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="button103"
+        android:text="@string/affrim"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/button35"
+        app:layout_constraintTop_toBottomOf="@+id/button35" />
+
+    <Button
+        android:id="@+id/button104"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="button104"
+        android:text="@string/clear"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/button35"
+        app:layout_constraintTop_toTopOf="@+id/button103" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

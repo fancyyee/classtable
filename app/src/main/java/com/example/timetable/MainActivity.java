@@ -3,6 +3,7 @@ package com.example.timetable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
             button_and_table();//初始化
         }
         catch (Exception e){
-            new log_out().log_out(e);
+            new log_out().log_out(e);//输出log
         }
     }
     public void button_and_table(){//初始化按钮和课表周数
-        button[11] = findViewById(R.id.button11);
+        button[11] = findViewById(R.id.button11);//把button放到数组
         button[12] = findViewById(R.id.button12);
         button[13] = findViewById(R.id.button13);
         button[14] = findViewById(R.id.button14);
@@ -52,19 +53,22 @@ public class MainActivity extends AppCompatActivity {
         button[53] = findViewById(R.id.button53);
         button[54] = findViewById(R.id.button54);
         button[55] = findViewById(R.id.button55);
-        class_table.set_class();
-        time time=new time();
+        class_table.set_class();//初始化课表
+
+        time time=new time();//获取当前时间
         time.gettime();
         weeknum=time.week_num;
-        class_on();
-        TextView textView=findViewById(R.id.textView6);
+
+        class_on();//设置课表
+
+        TextView textView=findViewById(R.id.textView6);//设置周数
         String text="这是第"+Integer.toString(time.week_num)+"周";
         textView.setText(text);
     }
 
     //设置课表
     public void class_on(){
-        int[] class_posion;
+        int[] class_posion;//课的代码
         if(!viewid){//根据viewid判断应该读取哪些课
             class_posion= new int[]{11, 12, 13, 14, 15, 21, 22, 23, 24, 25, 31, 32, 33, 34, 35, 41, 42, 43, 44, 45, 51, 52, 53, 54, 55};
         }
@@ -72,11 +76,10 @@ public class MainActivity extends AppCompatActivity {
             class_posion= new int[]{31, 32, 33, 34, 35, 41, 42, 43, 44, 45, 51, 52, 53, 54, 55, 61, 62, 63, 64, 65, 71, 72, 73, 74, 75};
         }
         for(int i=0;i<class_posion.length;i++){
-            int posion=class_posion[i];
+            int posion=class_posion[i];//获取单个pision
 
-            //根据viewid选择button
             Button buttonx;
-            if(!viewid){
+            if(!viewid){//根据viewid选择button
                 buttonx=button[posion];
             }
             else{
@@ -88,30 +91,31 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 buttonx.setText(class_table.title[posion]);
-                if(class_table.start_week[posion]>weeknum||class_table.over_week[posion]<weeknum){//如果时间符合
-                    if(coverid){
+                if(class_table.start_week[posion]>weeknum||class_table.over_week[posion]<weeknum){//如果时间不符合则根据coverid设置可见性
+                    if(coverid){//根据coverid设置可见性
                         buttonx.setVisibility(View.VISIBLE);
                     }
                     else{
                         buttonx.setVisibility(View.INVISIBLE);
                     }
-                    buttonx.setBackgroundColor(Color.parseColor("#9f9f9f"));
+                    buttonx.setBackgroundColor(Color.parseColor("#9f9f9f"));//设置背景颜色为灰色
                 }
-                else{
+                else{//如果时间符合则设置按钮可见并设置背景颜色为绿色
                     buttonx.setVisibility(View.VISIBLE);
                     buttonx.setBackgroundColor(Color.parseColor("#C6EFCE"));
                 }
             }
         }
     }
-    public void week_num_change(Boolean change){//这里的change是true则是加是flase则是减少
+    public void week_num_change(Boolean change){//change是true则是加，是flase则是减少
         if(change){
             weeknum++;
         }
         else{
             weeknum--;
         }
-        class_on();
+
+        class_on();//重新设置课表和周数的显示
         TextView textView=findViewById(R.id.textView6);
         String text="这是第"+Integer.toString(weeknum)+"周";
         textView.setText(text);
@@ -148,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         alertDialog1.show();
     }
-    public void coverid_changge(){
+    public void coverid_changge(){//修改coverid
         if(coverid){
             coverid=false;
         }
@@ -164,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//----------------------以下是button的批量界面，以及该class结尾的}----------------------------------------------------
+    //----------------------以下是button的批量界面，以及该class结尾的}----------------------------------------------------
     public void button11(View view){
         tanchuang(11);
     }
@@ -241,17 +245,13 @@ public class MainActivity extends AppCompatActivity {
         tanchuang(55);
     }
     public void button101(View view){//view向左
-        if(viewid){
+        if(viewid){//如果课表在右边
             view_change();
         }
     }
     public void button102(View view){//view向右
-        try {
-            if (!viewid) {
-                view_change();
-            }
-        }catch (Exception e){
-            new log_out().log_out(e);
+        if (!viewid) {//如果课表在左边
+            view_change();
         }
     }
     public void button103(View view){//周数-
@@ -262,5 +262,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void switch1(View view){
         coverid_changge();
+    }
+    public void button_setting(View view){//创建设置的View
+        Intent intent = new Intent(this, Setting.class);
+        startActivity(intent);
     }
 }
