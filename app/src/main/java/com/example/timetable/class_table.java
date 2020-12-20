@@ -7,10 +7,11 @@ public class class_table {
     int[] over_week=new int[76];//课的结束周数
     String[] posion=new String[76];//上课地点
     String[] teacher=new String[76];//授课教师
-    public void set_time(){
+
+    public void set_time(String path){
         start_time=1598803200000L;//第一周的第一天早上0时0分
     }
-    public void set_class(){
+    public void set_class(String path){
         title[11]="军事理论";
         teacher[11]="周剑波";
         start_week[11]=6;

@@ -2,6 +2,8 @@ package com.example.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +14,14 @@ public class Setting extends AppCompatActivity {
     public Button[] button=new Button[56];//button的集合
     class_table class_table=new class_table();//课表
     Boolean viewid=false;//用来记录屏幕的位置，flase是周一到周五，true是周三到周日
+    String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         button_and_table();//初始化
+        Intent intent = getIntent();
+        path = intent.getStringExtra(MainActivity.path);
     }
     public void button_and_table(){//初始化按钮和课表
         button[11] = findViewById(R.id.button11);
@@ -44,7 +49,7 @@ public class Setting extends AppCompatActivity {
         button[53] = findViewById(R.id.button53);
         button[54] = findViewById(R.id.button54);
         button[55] = findViewById(R.id.button55);
-        class_table.set_class();
+        class_table.set_class(path);
         class_on();
     }
     //设置课表
@@ -96,7 +101,10 @@ public class Setting extends AppCompatActivity {
         }
         class_on();
     }
-
+    public String pack_table(){//把课表转化成既定的格式的String
+        String response="";
+        return response;
+    }
     public void button11(View view){    }
     public void button12(View view){    }
     public void button13(View view){    }
@@ -138,3 +146,9 @@ public class Setting extends AppCompatActivity {
         class_on();
     }
 }
+/*
+time:222222222222222222222
+11:标题，教师，week初，week末，地点
+12:
+13:
+ */

@@ -3,6 +3,7 @@ package com.example.timetable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,12 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
     public Button[] button=new Button[56];//button的集合
     class_table class_table=new class_table();//课表
     public int weeknum;//周数
     Boolean viewid=false;//用来记录屏幕的位置，flase是周一到周五，true是周三到周日
     Boolean coverid=false;//用来表示是否显示不在的课，true为显示
+    public static String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         button[53] = findViewById(R.id.button53);
         button[54] = findViewById(R.id.button54);
         button[55] = findViewById(R.id.button55);
-        class_table.set_class();//初始化课表
+        class_table.set_class(path);//初始化课表
 
         time time=new time();//获取当前时间
-        time.gettime();
+        time.gettime(path);
         weeknum=time.week_num;
 
         class_on();//设置课表
@@ -64,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         TextView textView=findViewById(R.id.textView6);//设置周数
         String text="这是第"+Integer.toString(time.week_num)+"周";
         textView.setText(text);
+        try {
+            path = getApplicationContext().getFilesDir().getPath();
+        }catch (Exception e){
+            new log_out().log_out(e);
+        }
     }
 
     //设置课表
@@ -265,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void button_setting(View view){//创建设置的View
         Intent intent = new Intent(this, Setting.class);
+        intent.putExtra("path", path);
         startActivity(intent);
     }
 }
