@@ -148,7 +148,7 @@ public class Setting extends AppCompatActivity {
 }
 /*
 time:222222222222222222222
-11:标题，教师，week初，week末，地点
+11:标题&教师&week初&week末&地点;
 12:
 13:
  */
