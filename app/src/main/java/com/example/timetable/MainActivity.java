@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
+            path = getApplicationContext().getFilesDir().getPath();
+        }catch (Exception e){
+            new log_out().log_out(e);
+        }
+        try {
             button_and_table();//初始化
         }
         catch (Exception e){
@@ -68,11 +73,6 @@ public class MainActivity extends AppCompatActivity {
         TextView textView=findViewById(R.id.textView6);//设置周数
         String text="这是第"+Integer.toString(time.week_num)+"周";
         textView.setText(text);
-        try {
-            path = getApplicationContext().getFilesDir().getPath();
-        }catch (Exception e){
-            new log_out().log_out(e);
-        }
     }
 
     //设置课表

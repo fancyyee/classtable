@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 public class Setting extends AppCompatActivity {
     public Button[] button=new Button[56];//button的集合
     class_table class_table=new class_table();//课表
@@ -102,8 +106,26 @@ public class Setting extends AppCompatActivity {
         class_on();
     }
     public String pack_table(){//把课表转化成既定的格式的String
-        String response="";
+        String response="time:"+Long.toString(class_table.start_time)+"\n";
+        for(int i=10;i<class_table.title.length;i++){
+            if(class_table.title[i]!=null){
+                response=response+
+                        Integer.toString(i)+":"+
+                        class_table.title[i]+"&"+
+                        class_table.teacher[i]+"&"+
+                        Integer.toString(class_table.start_week[i])+"&"+
+                        Integer.toString(class_table.over_week[i])+"&"+
+                        class_table.posion[i]+"\n";
+            }
+        }
         return response;
+    }
+/*
+path="/data/user/0/com.example.timetable/files"
+所以保存路径为path+"/config.txt"
+*/
+    public void save_class_table(View view){
+        //重写一下关于txt的读写,参考网站https://www.cnblogs.com/xiaozhaoboke/p/11177168.html
     }
     public void button11(View view){    }
     public void button12(View view){    }
