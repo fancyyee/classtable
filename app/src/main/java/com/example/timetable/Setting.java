@@ -2,6 +2,7 @@ package com.example.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,9 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
+import java.io.UnsupportedEncodingException;
 
 public class Setting extends AppCompatActivity {
     public Button[] button=new Button[56];//button的集合
@@ -24,8 +29,11 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         button_and_table();//初始化
-        Intent intent = getIntent();
-        path = intent.getStringExtra(MainActivity.path);
+        path=MainActivity.path;
+        if(path==null){
+            fail_window(2);
+        }
+
     }
     public void button_and_table(){//初始化按钮和课表
         button[11] = findViewById(R.id.button11);
@@ -124,8 +132,57 @@ public class Setting extends AppCompatActivity {
 path="/data/user/0/com.example.timetable/files"
 所以保存路径为path+"/config.txt"
 */
-    public void save_class_table(View view){
-        //重写一下关于txt的读写,参考网站https://www.cnblogs.com/xiaozhaoboke/p/11177168.html
+    public void save_class_table(){
+
+        String response=pack_table();
+        if(response==null){
+            fail_window(1);
+        }
+        else if(response==""){
+            fail_window(1);
+        }
+        else if(path==null){
+            fail_window(2);
+        }
+        else{
+            //生成文件夹
+            File file_dir=new File(path+"/");
+            if(!file_dir.exists()){
+                Boolean file_dir_out=file_dir.mkdir();
+            }
+
+            //生成文件
+            File file_name=new File(path+"/config.txt");
+            if(!file_name.exists()){
+                try {
+                    file_name.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {//以UTF8格式写文件
+                FileOutputStream writerStream = new FileOutputStream(path+"/config.txt");
+                BufferedWriter writer = null;
+                writer = new BufferedWriter(new OutputStreamWriter(writerStream, "UTF-8"));
+                writer.write(response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void fail_window(int i){
+        String response="";
+        if(i==1){
+            response="课表出错，请重新编辑课表";
+        }
+        else if(i==2){
+            response="文件目录读取出错，请重新启动";
+        }
+        AlertDialog alertDialog1=new AlertDialog.Builder(this)
+                .setTitle("写入失败")//标题
+                .setMessage(response)//内容
+                .create();
+        alertDialog1.show();
     }
     public void button11(View view){    }
     public void button12(View view){    }
@@ -162,7 +219,7 @@ path="/data/user/0/com.example.timetable/files"
             view_change();
         }
     }
-    public void button103(View view){    }//确认
+    public void button103(View view){save_class_table();}//确认
     public void button104(View view){//清空
         class_table=new class_table();//初始化课表
         class_on();

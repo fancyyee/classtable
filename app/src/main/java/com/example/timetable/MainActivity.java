@@ -24,11 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            path = getApplicationContext().getFilesDir().getPath();
-        }catch (Exception e){
-            new log_out().log_out(e);
-        }
+        path="/storage/emulated/0/Android/com.example.timetable";
         try {
             button_and_table();//初始化
         }
@@ -273,8 +269,17 @@ public class MainActivity extends AppCompatActivity {
         coverid_changge();
     }
     public void button_setting(View view){//创建设置的View
-        Intent intent = new Intent(this, Setting.class);
-        intent.putExtra("path", path);
-        startActivity(intent);
+        if(path==null){
+            AlertDialog alertDialog1=new AlertDialog.Builder(this)
+                    .setTitle("写入失败")//标题
+                    .setMessage("")//内容
+                    .create();
+            alertDialog1.show();
+        }
+        else{
+            Intent intent = new Intent(this, Setting.class);
+            intent.putExtra("path", path);
+            startActivity(intent);
+        }
     }
 }
