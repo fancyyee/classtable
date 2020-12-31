@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
@@ -133,7 +134,6 @@ path="/data/user/0/com.example.timetable/files"
 所以保存路径为path+"/config.txt"
 */
     public void save_class_table(){
-
         String response=pack_table();
         if(response==null){
             fail_window(1);
@@ -150,7 +150,6 @@ path="/data/user/0/com.example.timetable/files"
             if(!file_dir.exists()){
                 Boolean file_dir_out=file_dir.mkdir();
             }
-
             //生成文件
             File file_name=new File(path+"/config.txt");
             if(!file_name.exists()){
@@ -165,6 +164,11 @@ path="/data/user/0/com.example.timetable/files"
                 BufferedWriter writer = null;
                 writer = new BufferedWriter(new OutputStreamWriter(writerStream, "UTF-8"));
                 writer.write(response);
+                writer.close();
+                AlertDialog alertDialog1=new AlertDialog.Builder(this)
+                        .setTitle("写入成功")//标题
+                        .create();
+                alertDialog1.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }

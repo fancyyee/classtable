@@ -72,4 +72,79 @@ public class class_table {
         posion[72]="T1309";
 
     }
+    /*这段代码未经测试，是用来把读取的文件和转化成相应的变量的,回头记得再看看
+    public void settable() {
+        String re="";
+        char[] string_char=re.toCharArray();
+        for(int i=0;i<string_char.length;i++){
+            if(string_char[i]=="t"){
+                if(new String(//如果这里的字符为time:
+                        string_char[i],string_char[i+1],string_char[i+2],string_char[i+3],string_char[i+4]//可能有问题
+                )=="time:"){
+                    i=i+5;//把i调到：之后
+                    String week_time="";
+                    while(true){
+                        if(string_char[i]=="\n"){
+                            break;
+                        }
+                        week_time=week_time+string_char[i];
+                        i=i+1;
+                    }
+                    try{
+                        start_time=Long.parseLong(week_time);
+                    }catch(Exception e){
+                        //这里后面想一下怎么处理
+                    }
+                }
+            }
+            if(string_char[i]="\n"){
+                i=i+1;
+                try{
+                    int num=Integer.parseInt(new String(string_char[i]+string_char[i+1]));
+                    i=i+3;
+                    String reme;
+                    int type=1;
+                    while(true){
+                        reme="";//重置状态
+                        if(string_char[i]=="\n"){
+                            break;
+                        }
+                        while(true){
+                            if(string_char[i]==":"|string_char[i]=="&"){//回头注意一下这里的全半角，目前是半角
+                                i=i+1;
+                                break;
+                            }
+                            reme=reme+string_char[i];
+                            i=i+1;
+                        }
+                        switch(type){
+                            case 1:
+                                title[num]=reme;
+                                type=type+1;
+                                break;
+                            case 2:
+                                teacher[num]=reme;
+                                type=type+1;
+                                break;
+                            case 3:
+                                start_week=Integer.parseInt(reme);
+                                type=type+1;
+                                break;
+                            case 4:
+                                over_week=Integer.parseInt(reme);
+                                type=type+1;
+                                break;
+                            case 5:
+                                posion[num]=reme;
+                                type=type+1;
+                                break;
+                        }
+                    }
+                }catch(Exception e){
+                    //
+                }
+            }
+        }
+    }
+     */
 }

@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         else{
             weeknum--;
         }
-
         class_on();//重新设置课表和周数的显示
         TextView textView=findViewById(R.id.textView6);
         String text="这是第"+Integer.toString(weeknum)+"周";
