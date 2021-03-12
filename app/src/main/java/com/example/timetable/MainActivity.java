@@ -1,15 +1,25 @@
 package com.example.timetable;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.security.Permission;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -24,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkPermission();//动态获取文件权限
         path="/storage/emulated/0/Android/com.example.timetable";
         try {
             button_and_table();//初始化
@@ -58,14 +69,43 @@ public class MainActivity extends AppCompatActivity {
         button[53] = findViewById(R.id.button53);
         button[54] = findViewById(R.id.button54);
         button[55] = findViewById(R.id.button55);
-        class_table.set_class(path);//初始化课表
-
+        try {
+            int tableState = class_table.set_class();//初始化课表
+            if(tableState==0|tableState==3){
+                tableState =class_table.set_class();
+                if(tableState==0|tableState==3) {
+                    AlertDialog tableAlertDialog = new AlertDialog.Builder(this)
+                            .setTitle("It's a bug")//标题
+                            .setMessage("It's a bug,code:" + tableState)//内容
+                            .create();
+                    tableAlertDialog.show();
+                }
+                if(tableState==4){
+                    AlertDialog tableAlertDialog = new AlertDialog.Builder(this)
+                            .setTitle("It's a bug")//标题
+                            .setMessage("load filed")//内容
+                            .create();
+                    tableAlertDialog.show();
+                }
+            }
+            if(tableState==1){
+                AlertDialog tableAlertDialog=new AlertDialog.Builder(this)
+                        .setTitle("初始化完成")//标题
+                        .setMessage("请前往\"课表/课表.xls\"导入课表"+tableState)//内容
+                        .create();
+                tableAlertDialog.show();
+            }
+        }catch (Exception e){
+            new log_out().log_out(e);
+        }
         time time=new time();//获取当前时间
-        time.gettime(path);
+        time.gettime(class_table.start_time);
         weeknum=time.week_num;
-
-        class_on();//设置课表
-
+        try {
+            class_on();//设置课表
+        }catch (Exception e){
+            new log_out().log_out(e);
+        }
         TextView textView=findViewById(R.id.textView6);//设置周数
         String text="这是第"+Integer.toString(time.week_num)+"周";
         textView.setText(text);
@@ -82,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         }
         for(int i=0;i<class_posion.length;i++){
             int posion=class_posion[i];//获取单个pision
-
             Button buttonx;
             if(!viewid){//根据viewid选择button
                 buttonx=button[posion];
@@ -164,6 +203,10 @@ public class MainActivity extends AppCompatActivity {
             coverid=true;
         }
         class_on();
+    }
+    private void getPermission(){//动态获取权限
+        String[] permission={Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        ActivityCompat.requestPermissions(MainActivity.this,permission,1);
     }
     public void test(View view){
 
@@ -267,18 +310,102 @@ public class MainActivity extends AppCompatActivity {
     public void switch1(View view){
         coverid_changge();
     }
-    public void button_setting(View view){//创建设置的View
-        if(path==null){
-            AlertDialog alertDialog1=new AlertDialog.Builder(this)
-                    .setTitle("写入失败")//标题
-                    .setMessage("")//内容
-                    .create();
-            alertDialog1.show();
+
+
+
+
+
+
+
+
+
+
+
+    //other's code
+    //动态获取权限
+    //原文链接：https://blog.csdn.net/qq_37832932/article/details/106453911
+    //使用方法checkPermission();
+    String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};//需要的权限在这里加入
+    List<String> mPermissionList = new ArrayList<>();
+
+    // private ImageView welcomeImg = null;
+    private static final int PERMISSION_REQUEST = 1;
+// 检查权限
+
+
+    private void checkPermission() {
+        mPermissionList.clear();
+        //判断哪些权限未授予
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(this, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                mPermissionList.add(permissions[i]);
+            }
         }
-        else{
-            Intent intent = new Intent(this, Setting.class);
-            intent.putExtra("path", path);
-            startActivity(intent);
+        /**
+         * 判断是否为空
+         */
+        if (mPermissionList.isEmpty()) {//未授予的权限为空，表示都授予了
+        } else {//请求权限方法
+            String[] permissions = mPermissionList.toArray(new String[mPermissionList.size()]);//将List转为数组
+            ActivityCompat.requestPermissions(MainActivity.this, permissions, PERMISSION_REQUEST);
         }
     }
+    /**
+     * 响应授权
+     * 这里不管用户是否拒绝，都进入首页，不再重复申请权限
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISSION_REQUEST:
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                break;
+        }
+    }
+    //Android 危险权限目录
+    //group:android.permission-group.CONTACTS
+    //        permission:android.permission.WRITE_CONTACTS
+    //        permission:android.permission.GET_ACCOUNTS
+    //        permission:android.permission.READ_CONTACTS
+    //
+    //group:android.permission-group.PHONE
+    //      permission:android.permission.READ_CALL_LOG
+    //      permission:android.permission.READ_PHONE_STATE
+    //      permission:android.permission.CALL_PHONE
+    //      permission:android.permission.WRITE_CALL_LOG
+    //      permission:android.permission.USE_SIP
+    //      permission:android.permission.PROCESS_OUTGOING_CALLS
+    //      permission:com.android.voicemail.permission.ADD_VOICEMAIL
+    //
+    //group:android.permission-group.CALENDAR
+    //      permission:android.permission.READ_CALENDAR
+    //      permission:android.permission.WRITE_CALENDAR
+    //
+    //group:android.permission-group.CAMERA
+    //      permission:android.permission.CAMERA
+    //
+    //group:android.permission-group.SENSORS
+    //      permission:android.permission.BODY_SENSORS
+    //
+    //group:android.permission-group.LOCATION
+    //      permission:android.permission.ACCESS_FINE_LOCATION
+    //      permission:android.permission.ACCESS_COARSE_LOCATION
+    //
+    //group:android.permission-group.STORAGE
+    //      permission:android.permission.READ_EXTERNAL_STORAGE
+    //      permission:android.permission.WRITE_EXTERNAL_STORAGE
+    //
+    //group:android.permission-group.MICROPHONE
+    //      permission:android.permission.RECORD_AUDIO
+    //
+    //group:android.permission-group.SMS
+    //      permission:android.permission.READ_SMS
+    //      permission:android.permission.RECEIVE_WAP_PUSH
+    //      permission:android.permission.RECEIVE_MMS
+    //      permission:android.permission.RECEIVE_SMS
+    //      permission:android.permission.SEND_SMS
+    //      permission:android.permission.READ_CELL_BROADCASTS
 }

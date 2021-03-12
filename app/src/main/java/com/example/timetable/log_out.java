@@ -5,6 +5,14 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class log_out {
+    public String string_log_out(Exception e){
+        StackTraceElement stackTraceElement= e.getStackTrace()[0];// 得到异常棧的首个元素
+        String text="File="+stackTraceElement.getFileName()+"\n"+// 打印文件名
+                "Line="+stackTraceElement.getLineNumber()+"\n"+// 打印出错行号
+                "Method="+stackTraceElement.getMethodName()+"\n"+// 打印出错方法
+                "log="+e.toString()+"\n";
+        return  text;
+    }
     public void log_out(Exception e){
         StackTraceElement stackTraceElement= e.getStackTrace()[0];// 得到异常棧的首个元素
         String text="File="+stackTraceElement.getFileName()+"\n"+// 打印文件名

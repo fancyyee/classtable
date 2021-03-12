@@ -70,7 +70,7 @@
         android:id="@+id/button33"
         android:layout_width="72dp"
         android:layout_height="100dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:onClick="button33"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/button32"
@@ -112,7 +112,7 @@
         android:id="@+id/button35"
         android:layout_width="72dp"
         android:layout_height="100dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:onClick="button35"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/button34"
@@ -370,6 +370,7 @@
         android:onClick="button102"
         android:text="@string/right"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -381,17 +382,8 @@
         android:onClick="button101"
         android:text="@string/left"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/timg"
-        android:onClick="button_setting"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/button35"
-        app:layout_constraintStart_toStartOf="@+id/button35" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
